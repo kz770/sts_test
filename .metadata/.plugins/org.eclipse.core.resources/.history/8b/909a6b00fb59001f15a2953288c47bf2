@@ -1,0 +1,11 @@
+package com.example.demo.Advice;
+
+import org.aspectj.lang.annotation.Before;
+
+public class ProfilingAspect {
+	
+	@Before("")
+	public void pro() {
+		
+	}
+}

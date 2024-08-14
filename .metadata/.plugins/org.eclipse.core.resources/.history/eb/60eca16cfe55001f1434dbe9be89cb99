@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods">
+	<select id="findAll" resultType="goodsVO">
+		select * from goods order by
+		item
+	</select>
+
+	<insert id="insert" parameterType="goodsVO">
+		insert into
+		goods(no,item,price,qty,fname)
+		values(#{no},#{item},#{price},#{qty},#{fname})
+	</insert>
+
+	<select id="findByNo" resultType="goodsVO">
+		select * from goods where
+		no=#{no}
+	</select>
+
+	<delete id="delete">
+		delete goods where no=#{no}
+	</delete>
+
+	<update id="update" parameterType="GoodsVO">
+		update goods set
+		item=#{item},qty=#{qty},price=#{price},fname=#{fname} where
+		no=#{no}
+	</update>
+
+	<select id="totalRecord" resultType="java.lang.Integer">
+		select count(*) from goods
+		<if test="keyword != null and keyword!=''">
+			<if test="searchColumn=='item'">
+				where ${searchColumn} like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchColumn=='price'">
+				where ${searchColumn} <![CDATA[${op}]]> #{keyword}
+			</if>
+		</if>
+	</select>
+
+	<select id="listAll" resultType="goodsVO">
+		select * from (select rownum n, a.*
+		from (select *
+		from goods
+		<if test="keyword != null and keyword!=''">
+			<if test="searchColumn=='item'">
+				where ${searchColumn} like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchColumn=='price'">
+				where ${searchColumn} <![CDATA[${op}]]> #{keyword}
+			</if>
+		</if>
+		order by ${orderColumn}) a)
+		where n between #{start} and #{end}
+	</select>
+
+
+
+</mapper>

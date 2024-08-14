@@ -1,0 +1,17 @@
+package com.example.demo.Advice;
+
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+
+public class ProfilingAspect {
+	
+	@Pointcut("execution(public void com.example.demo.dao..list(int)")
+	public void myDao() {
+		
+	}
+	
+	@Before("")
+	public void pro() {
+		
+	}
+}

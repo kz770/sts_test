@@ -1,0 +1,5 @@
+spring.application.name=day0814
+spring.application.name=boardtest
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp

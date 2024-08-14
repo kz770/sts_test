@@ -1,0 +1,20 @@
+package com.example.demo.util;
+
+import com.example.demo.vo.EmpVO;
+
+public class EmpUtil {
+	public String getHtmlEmp(EmpVO vo) {
+		String text="";
+		text+=vo.getEname();
+		text+=vo.getEmail();
+		text+=vo.getJob();
+		text+=vo.getJumin();
+		text+=vo.getComm();
+		text+=vo.getEno();
+		text+=vo.getDno();
+		text+=vo.getHiredate();
+		text+=vo.getMgr();
+		text+=vo.getSalary();
+		return text;
+	}
+}

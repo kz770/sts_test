@@ -1,0 +1,74 @@
+package com.example.demo.controller;
+
+import java.io.FileWriter;
+import java.sql.Date;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@Aspect
+public class ContollerAspect {
+	@Pointcut("execution (public * com.example.demo.controller..*(..))")
+	public void controller() {
+		
+	}
+	
+	@Around("controller()")
+	public Object pro(ProceedingJoinPoint joinPoint) {
+		Object re=null;
+		String uri="";
+		String ip="";
+
+		long start = System.currentTimeMillis();
+		Date date= new Date(start);
+		String time=date.toLocalDate();
+		
+		Object args[]=joinPoint.getArgs();
+		
+		if (args!=null) {
+			HttpServletRequest req=(HttpServletRequest)args[0];
+			uri=req.getRequestURI();
+			ip=req.getRemoteAddr();
+		}
+		try {
+			re=joinPoint.proceed();
+			
+		} catch (Throwable e) {
+			// TODO: handle exception
+		}
+		
+		
+		long end = System.currentTimeMillis();
+		long delay = end-start;
+		String row = uri+"/"+ip+"/"+time+"/"+delay;
+		System.out.println(row);
+		try {
+			int year = date.getYear()+1900;
+			int month = date.getMonth()+1;
+			int day = date.getDate();
+			String fname = "c:/kosta_log";
+			fname += year;
+			if(month<10) {
+				fname+="0";
+			}
+			fname+=month;
+			if(day<10) {
+				fname+="0";
+			}
+			fname+=day;
+			fname+=".txt";
+			FileWriter fw = new FileWriter(fname, true);
+			fw.write(row);
+			fw.close();
+		} catch (Exception e) {
+			System.out.println("예외발생:"+e.getMessage());
+		}
+		
+		
+		
+		
+}

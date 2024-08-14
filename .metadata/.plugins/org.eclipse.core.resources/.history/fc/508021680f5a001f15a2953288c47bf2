@@ -1,0 +1,12 @@
+package com.example.demo.controller;
+
+import org.aspectj.lang.annotation.Aspect;
+
+@Aspect
+public class ContollerAspect {
+	@Pointcut("execution (public * com.example.demo.controller..*(..)"));
+	public void controller() {
+		
+	}
+
+}

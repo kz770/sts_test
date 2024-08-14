@@ -1,0 +1,9 @@
+package com.example.demo.Advice;
+
+public class ProfilingAspect {
+	
+	@
+	public Object pro() {
+		
+	}
+}

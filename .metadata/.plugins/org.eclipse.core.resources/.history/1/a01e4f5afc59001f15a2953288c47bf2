@@ -1,0 +1,21 @@
+package com.example.demo.Advice;
+
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class ProfilingAspect {
+	
+	@Pointcut("execution (public * com.example.demo.dao..*(..))")
+	public void myDao() {
+		
+	}
+	
+	@Before("")
+	public void pro() {
+		
+	}
+}

@@ -1,0 +1,15 @@
+INDEX VERSION 1.134
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\513279824.index
+\boardtest\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2224054263.index
+\day0814\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1308984158.index
+\day0814\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1521471680.index
+\hello\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2026821780.index
+\day0814\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3824517320.index
+\book_test\src\main\java
+C:\sts_test\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3172092914.index
+\goodstest\src\main\java

@@ -1,0 +1,36 @@
+package com.example.demo.controller;
+
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
+
+import jakarta.servlet.http.HttpServletRequest;
+
+@Aspect
+public class ContollerAspect {
+	@Pointcut("execution (public * com.example.demo.controller..*(..))")
+	public void controller() {
+		
+	}
+	
+	@Around("controller()")
+	public Object pro(ProceedingJoinPoint joinPoint) {
+		Object re=null;
+		String uri="";
+		
+		Object args[]=joinPoint.getArgs();
+		if (args!=null) {
+			HttpServletRequest req=(HttpServletRequest)args[0];
+			uri=req.getRequestURI();
+			ip=req.getRemoteAddr();
+		}
+		try {
+			re=joinPoint.proceed();
+			
+		} catch (Throwable e) {
+			// TODO: handle exception
+		}
+		return re;
+	}
+}
