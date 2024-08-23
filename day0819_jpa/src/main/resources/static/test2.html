@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#saveSession").click(function() {
+			let data=$("#sdata").val();
+			sessionStorage.setItem("sdata",data);
+			alert("session save success!!");
+		})
+		$("#saveLocal").click(function() {
+			let data=$("#ldata").val();
+			localStorage.setItem("ldata",data);
+			alert("local save success!!");
+		})
+		$("#readSession").click(function(){
+			let data=sessionStorage.getItem("sdata");
+			$("#sread").html(data);
+		})
+		$("#readLocal").click(function(){
+			let data=localStorage.getItem("ldata");
+			$("#lread").html(data);
+		})
+	})
+</script>
+</head>
+<body>
+	<h2>Storage Test</h2>
+	<hr>
+	Session Storage :
+	<input type="test" id="sdata">
+	<button id="saveSession">save</button>
+	<br> Local Storage :
+	<input type="test" id="ldata">
+	<button id="saveLocal">save</button>
+	<br>
+
+	<hr>
+
+	Session Storage :
+	<span id="sread"></span>
+	<button id="readSession">read</button>
+	<br> Local Storage :
+	<span id="lread"></span>
+	<button id="readLocal">read</button>
+	<br>
+</body>
+</html>

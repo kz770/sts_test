@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+	function deleteFunc(bookid) {
+		if (confirm("정말로 삭제하시겠습니까?")) {
+			window.location.href = "/book/delete?bookid=" + bookid;
+			
+		}
+	}
+	$(function() {
+		$("#btnUpdate").click(function(e) {
+			if (!confirm("수정하시겠습니까?"))
+				e.preventDefault();
+		})
+	})
+</script>
+</head>
+<body>
+	<div class="container mt-3">
+		<h2>Detail Book</h2>
+		<hr>
+		<form action="update" method="post">
+			<div class="mb-3 mt-3">
+				<label for="bookid">Book Id:</label> <span th:text="${vo.bookid}"></span><input type="hidden"
+					class="form-control" id="bookid" th:value="${vo.bookid}" placeholder="Enter Book Id"
+					name="bookid">
+			</div>
+			<div class="mb-3 mt-3">
+				<label for="bookname">Book name:</label> <input type="text"
+					class="form-control" id="bookname" placeholder="Enter bookname"
+					name="bookname" th:value="${vo.bookname}">
+			</div>
+			<div class="mb-3 mt-3">
+				<label for="price">Price:</label> <input type="text"
+					class="form-control" id="price" placeholder="Enter price"
+					name="price" th:value="${vo.price}">
+			</div>
+			<div class="mb-3 mt-3">
+				<label for="publisher">Publisher:</label> <input type="text"
+					class="form-control" id="publisher" placeholder="Enter publisher"
+					name="publisher" th:value="${vo.publisher}">
+			</div>
+
+			<button type="submit" class="btn btn-primary" id="btnUpdate">UPDATE INFO</button>
+		</form>
+		<a href="/book/list">back to list</a> <a
+			th:href="@{/book/delete(bookid=${vo.bookid})}"
+			th:onclick="'deleteFunc(' + ${vo.bookid} +')'">DELETE</a>
+	</div>
+
+</body>
+</html>

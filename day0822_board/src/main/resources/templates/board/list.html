@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>BOARD LIST</h2>
+	<hr>
+	<table>
+		<tr>
+			<th>NO</th>
+			<th>TITLE</th>
+			<th>WRITER</th>
+			<th>REGDATE</th>
+		</tr>
+		<tr th:each="post:${list}">
+			<td th:text="${post.no}"></td>
+			<td th:text="${post.title}"></td>
+			<td th:text="${post.writer}"></td>
+			<td th:text="${post.regdate}"></td>
+		</tr>
+	</table>
+</body>
+</html>

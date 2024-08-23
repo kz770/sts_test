@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Dept List</h2>
+	<hr>
+	<table border="1" width="70%">
+		<tr>
+			<th>dept no</th>
+			<th>dept name</th>
+			<th>dept location</th>
+		</tr>
+		<tr th:each="d:${list}">
+			<td th:text="${d.dno}"></td>
+			<td th:text="${d.dname}"></td>
+			<td th:text="${d.dloc}"></td>
+		</tr>
+	</table>
+</body>
+</html>
