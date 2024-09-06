@@ -8,13 +8,13 @@
 <header>
     <nav>
         <!-- 로그인 상태에 따라 표시할 내용 -->
-        <div th:if="${#authentication.principal != null}" style="background-color: darkseagreen">
-            <span>Welcome, <span th:text="${#authentication.principal.username}"></span></span>
+        <span th:if="${#authentication?.principal != null}" style="background-color: darkseagreen">
+            <span>Welcome, <span th:text="${#authentication.principal?.username}"></span></span>
             <a href="/logout" th:href="@{/logout}">Logout</a>
-        </div>
-        <div th:if="${#authentication.principal == null}" style="background-color: darkseagreen">
+        </span>
+        <span th:if="${#authentication?.principal == null}" style="background-color: darkseagreen">
             <a href="/login" th:href="@{/login}">Login</a>
-        </div>
+        </span>
     </nav>
 </header>
 </body>

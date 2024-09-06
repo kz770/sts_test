@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container mt-3">
+    <h2>Board List</h2>
+<!--    <a href="/board/myBoard">Go To My Board</a>-->
+    <hr>
+    <a th:href="@{'/board/list/1/'+${session.loginUSER.id}}">내글보기</a>
+    <a href="/board/list/1/all">모두출력</a>
+    <table class="table table-hover">
+        <tr>
+            <th>NO</th>
+            <th>WRITER</th>
+            <th>TITLE</th>
+            <th>HIT</th>
+        </tr>
+        <tr th:each="board:${boards}">
+            <td th:text="${board.no}"></td>
+            <td th:text="${board.writer}"></td>
+            <td>
+
+                <span th:each="i:${#numbers.sequence(1,board.b_level)}">&nbsp;&nbsp;</span>
+                →
+                <a th:text="${board.title}"></a>
+            </td>
+            <td th:text="${board.hit}"></td>
+        </tr>
+    </table>
+    <hr>
+    <th:block th:each="i:${#numbers.sequence(1,totalPage)}">
+        <a th:href="@{'/board/list/'+${i}+'/'+${id}}" th:text="${i}"></a>
+    </th:block>
+</div>
+</body>
+</html>

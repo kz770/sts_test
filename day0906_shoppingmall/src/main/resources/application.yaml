@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: shop
+
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: c##test
+    password: test
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      show_sql: true
+      format_sql: true
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug

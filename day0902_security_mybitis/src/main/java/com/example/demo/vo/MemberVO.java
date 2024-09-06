@@ -8,5 +8,5 @@ public class MemberVO {
 	private String pwd;
 	private String name;
 	private String role;
-
+	
 }

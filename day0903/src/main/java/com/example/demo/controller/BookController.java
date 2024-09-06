@@ -20,7 +20,7 @@ public class BookController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) auth.getPrincipal();
         MemberVO m = service.findById(user.getUsername());
-        System.out.println("m = " + m);
+//        System.out.println("m = " + m);
         session.setAttribute("member", m);
     }
 }

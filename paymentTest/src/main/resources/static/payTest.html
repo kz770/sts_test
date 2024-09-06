@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+    <script>
+        $(function(){
+            $("#btnPay").click(function (){
+                // alert("hello");
+                IMP.init("imp36411042");
+                IMP.request_pay(
+                    {
+                        pg: "kcp",
+                        pay_method: "card",
+                        merchant_uid: `payment-${crypto.randomUUID()}`, // 주문 고유 번호
+                        name: "Gold Bar",
+                        amount: 10,
+                        buyer_email: "gildong@gmail.com",
+                        buyer_name: "홍길동",
+                        buyer_tel: "010-4242-4242",
+                        buyer_addr: "서울특별시 강남구 신사동",
+                        buyer_postcode: "01181",
+                    },
+                    {
+                        pg: "kcp",
+                        pay_method: "card",
+                        merchant_uid: `payment-${crypto.randomUUID()}`, // 주문 고유 번호
+                        name: "Silver Bar",
+                        amount: 10,
+                        buyer_email: "gildong@gmail.com",
+                        buyer_name: "홍길동",
+                        buyer_tel: "010-4242-4242",
+                        buyer_addr: "서울특별시 강남구 신사동",
+                        buyer_postcode: "01181",
+                    },
+                    function (response) {
+                        console.log(response)
+                        $("#imp_uid").val(response.imp_uid);
+                        $("#merchant_uid").val(response.merchant_uid);
+                        $("#paid_amount").val(response.paid_amount);
+                        $("#apply_num").val(response.apply_num);
+                        $("#paymentForm").submit()
+                    },
+                );
+            })
+        })
+    </script>
+</head>
+<body>
+<button id="btnPay">payment</button>
+<form action="/payok" method="post" id="paymentForm">
+    <input type="text" name="imp_uid" id="imp_uid">
+    <input type="text" name="merchant_uid" id="merchant_uid">
+    <input type="text" name="paid_amount" id="paid_amount">
+    <input type="text" name="apply_num" id="apply_num">
+</form>
+</body>
+</html>
